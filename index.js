@@ -32,7 +32,7 @@ var List = require('mag-component-list'),
  */
 function CheckList ( config ) {
 
-    config.className = 'checkList ' + (config.className || '');
+    //config.className = 'checkList ' + (config.className || '');
 
     List.call(this, config);
 
@@ -49,6 +49,9 @@ function CheckList ( config ) {
 
 CheckList.prototype = Object.create(List.prototype);
 CheckList.prototype.constructor = CheckList;
+
+// set component name
+CheckList.prototype.name = 'mag-component-check-list';
 
 /**
  * Default render function
