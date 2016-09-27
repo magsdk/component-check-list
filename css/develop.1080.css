@@ -22,21 +22,25 @@
         .mag-component-check-list > .body > .item.focus.mark {
             background-color: #ae7200;
             color: white; }
-    .mag-component-check-list .horizontal {
+    .mag-component-check-list.horizontal {
         display: table;
         table-layout: fixed;
         width: 100%; }
-        .mag-component-check-list .horizontal > .item {
+        .mag-component-check-list.horizontal > .item {
             display: table-cell;
             text-align: center;
             vertical-align: middle; }
-    .mag-component-check-list > .item .checkBoxWrapper > .stb-component-checkbox {
+    .mag-component-check-list > .item .checkBoxWrapper > div {
+        cursor: pointer;
+        display: inline-block;
+        width: 39px;
+        height: 39px;
+        line-height: 39px;
+        border: 2px solid #888;
+        background-color: #bbb;
+        vertical-align: bottom;
         display: block; }
-        .mag-component-check-list > .item .checkBoxWrapper > .stb-component-checkbox:after {
-            font-family: 'icons';
-            display: block;
-            content: 'Y'; }
-        .mag-component-check-list > .item .checkBoxWrapper > .stb-component-checkbox.checked:after {
-            content: 'Z'; }
+        .mag-component-check-list > .item .checkBoxWrapper > div.checked {
+            background-color: orange; }
     .mag-component-check-list.focus {
         outline: 1px dashed red; }

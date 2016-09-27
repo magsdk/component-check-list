@@ -3,16 +3,9 @@
 
 @mixin mag-component-check-list {
     > .item {
-        .checkBoxWrapper > .stb-component-checkbox {
+        .checkBoxWrapper > div {
+            @include spa-component-checkbox;
             display: block;
-            &:after {
-                font-family: 'icons';
-                display: block;
-                content: 'Y';
-            }
-            &.checked:after {
-                content: 'Z';
-            }
         }
     }
 }
