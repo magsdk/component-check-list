@@ -4,7 +4,6 @@
 @mixin mag-component-check-list {
     > .item {
         .checkBoxWrapper > div {
-            @include spa-component-checkbox;
             display: block;
         }
     }
