@@ -1,7 +1,6 @@
 .mag-component-check-list {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    background-color: #333;
     width: 100%; }
     .mag-component-check-list.hidden {
         display: none; }
@@ -11,15 +10,6 @@
         vertical-align: middle;
         height: 32px;
         line-height: 32px; }
-        .mag-component-check-list > .body > .item.mark {
-            background-color: green;
-            color: black; }
-        .mag-component-check-list > .body > .item.focus {
-            background-color: orange;
-            color: black; }
-        .mag-component-check-list > .body > .item.focus.mark {
-            background-color: #ae7200;
-            color: white; }
     .mag-component-check-list.horizontal {
         display: table;
         table-layout: fixed;
