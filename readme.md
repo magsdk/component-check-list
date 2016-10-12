@@ -19,10 +19,16 @@ npm install mag-component-check-list
 
 ## Usage ##
 
-Add the singleton to the scope:
-
 ```js
-var list = require('mag-component-check-list');
+var CheckList = require('mag-component-check-list'),
+    checkList = new CheckList({
+        focusIndex:0,
+        data: [
+            {state: false, title: 'Some title 1', value: 'value 1'},
+            {state: true, title: 'Some title 2', value: 'value 2'},
+            {state: false, title: 'Some title 3', value: 'value 3'}
+        ]
+    });
 ```
 
 

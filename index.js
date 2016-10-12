@@ -8,7 +8,7 @@
 'use strict';
 
 var List = require('mag-component-list'),
-    CheckBox = require('stb-component-checkbox');
+    CheckBox = require('spa-component-checkbox');
 
 
 /**
@@ -18,17 +18,6 @@ var List = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
- *
- * @example
- * var CheckList = require('../stb/ui/check.list'),
- *     new CheckList({
- *         focusIndex:0,
- *         data:[
- *            {state:false, title:'Some title', value:'val1'},
- *            {state:true, title:'Some title 1', value:'val2'},
- *            {state:false, title:'Some title 2', value:'val3'}
- *            ]
- *     });
  */
 function CheckList ( config ) {
 
