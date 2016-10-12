@@ -19,16 +19,23 @@ npm install mag-component-check-list
 
 ## Usage ##
 
+Add the constructor to the scope:
+
 ```js
-var CheckList = require('mag-component-check-list'),
-    checkList = new CheckList({
-        focusIndex:0,
-        data: [
-            {state: false, title: 'Some title 1', value: 'value 1'},
-            {state: true, title: 'Some title 2', value: 'value 2'},
-            {state: false, title: 'Some title 3', value: 'value 3'}
-        ]
-    });
+var CheckList = require('mag-component-check-list');
+```
+
+Create check list instance:
+
+```js
+var checkList = new CheckList({
+    focusIndex:0,
+    data: [
+        {state: false, title: 'Some title 1', value: 'value 1'},
+        {state: true, title: 'Some title 2', value: 'value 2'},
+        {state: false, title: 'Some title 3', value: 'value 3'}
+    ]
+});
 ```
 
 
