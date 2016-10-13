@@ -29,7 +29,7 @@ Create check list instance:
 
 ```js
 var checkList = new CheckList({
-    focusIndex:0,
+    focusIndex: 0,
     data: [
         {state: false, title: 'Some title 1', value: 'value 1'},
         {state: true, title: 'Some title 2', value: 'value 2'},
