@@ -1,9 +1,10 @@
 Check list component
 ====================
 
-[![Build Status](https://img.shields.io/travis/magsdk/component-check-list.svg?style=flat-square)](https://travis-ci.org/magsdk/component-check-list)
-[![NPM version](https://img.shields.io/npm/v/mag-component-check-list.svg?style=flat-square)](https://www.npmjs.com/package/mag-component-check-list)
-[![Dependencies Status](https://img.shields.io/david/spasdk/component-check-list.svg?style=flat-square)](https://david-dm.org/spasdk/component-check-list)
+[![build status](https://img.shields.io/travis/magsdk/component-check-list.svg?style=flat-square)](https://travis-ci.org/magsdk/component-check-list)
+[![npm version](https://img.shields.io/npm/v/mag-component-check-list.svg?style=flat-square)](https://www.npmjs.com/package/mag-component-check-list)
+[![dependencies status](https://img.shields.io/david/spasdk/component-check-list.svg?style=flat-square)](https://david-dm.org/spasdk/component-check-list)
+[![devDependencies status](https://img.shields.io/david/dev/spasdk/component-check-list.svg?style=flat-square)](https://david-dm.org/spasdk/component-check-list?type=dev)
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/spasdk)
 
 
