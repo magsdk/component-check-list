@@ -77,9 +77,7 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
     $item.state = check.value;
     $item.value = data.value;
 
-
     $item.appendChild(table);
-
 };
 
 CheckList.prototype.renderItem = CheckList.prototype.renderItemDefault;
