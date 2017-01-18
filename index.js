@@ -60,6 +60,7 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         });
 
     $item.innerHTML = '';
+    $item.className = 'item ' + (data.className || '') + ($item === this.$focusItem ? ' focus' : '');
 
     table.appendChild(tr);
 
