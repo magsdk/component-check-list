@@ -42,11 +42,12 @@ CheckList.prototype.constructor = CheckList;
 // set component name
 CheckList.prototype.name = 'mag-component-check-list';
 
+
 /**
  * Default render function
  *
  * @param {Element} $item in list
- * @param {array} data to render layout element
+ * @param {Array} data to render layout element
  * @param {string} [data.title] title of checkbox
  * @param {boolean} [data.state] state of checkbox: checked or not
  * @param {string} [data.value] special value of item
@@ -84,5 +85,5 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
 CheckList.prototype.renderItem = CheckList.prototype.renderItemDefault;
 
 
+// public
 module.exports = CheckList;
-
