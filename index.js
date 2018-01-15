@@ -22,8 +22,6 @@ var List = require('mag-component-list'),
  * @param {Object} [config={}] init parameters (all inherited from the parent)
  */
 function CheckList ( config ) {
-    var self = this;
-    //config.className = 'checkList ' + (config.className || '');
 
     List.call(this, config);
 
@@ -31,15 +29,6 @@ function CheckList ( config ) {
      * Checked data array
      */
     this.checkedData = [];
-
-    this.addListener('click:item', function ( event ) {
-        var item = event.$item;
-
-        item.checkBox.set(!item.checkBox.value);
-        item.state = item.checkBox.value;
-        self.data[item.index].state = item.checkBox.value;
-    });
-
 }
 
 
