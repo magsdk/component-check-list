@@ -19,7 +19,8 @@
     "dependencies": {
         "mag-component-list": "1.*.*",
         "stb-component": "1.*.*",
-        "spa-component-checkbox": "1.*.*"
+        "spa-component-checkbox": "1.*.*",
+        "stb-keys": "*"
     },
     "devDependencies": {
         "eslint": "4.*.*",
