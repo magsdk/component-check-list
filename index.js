@@ -3,8 +3,6 @@
  * @copyright Boris Aleynikov <aleynikov.boris@gmail.com>
  */
 
-/* eslint no-path-concat: 0 */
-
 'use strict';
 
 var List = require('mag-component-list'),
