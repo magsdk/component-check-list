@@ -22,7 +22,6 @@ var List = require('mag-component-list'),
  * @param {Object} [config={}] init parameters (all inherited from the parent)
  */
 function CheckList ( config ) {
-
     List.call(this, config);
 
     /**
@@ -47,12 +46,14 @@ CheckList.prototype.setData = function ( config ) {
     var i = 0;
 
     List.prototype.setData.call(this, config);
+
     for ( i; i < this.data.length; i++ ) {
         if ( this.data[i].state ) {
             this.checkedData.push(this.data[i]);
         }
     }
 };
+
 
 /**
  * CheckList of all default event callbacks.
@@ -108,6 +109,7 @@ CheckList.prototype.defaultEvents = {
     }
 };
 
+
 CheckList.prototype.changeState = function ( item ) {
     var state = !item.state,
         data = this.data[item.index],
@@ -116,6 +118,7 @@ CheckList.prototype.changeState = function ( item ) {
     item.state = state;
     data.state = state;
     item.checkBox.className = state ? ICON_ACTIVE : ICON;
+
     if ( state ) {
         this.checkedData.push(data);
     } else {
@@ -124,6 +127,7 @@ CheckList.prototype.changeState = function ( item ) {
             this.checkedData.slice(index, 1);
         }
     }
+
     if ( this.events['change:item'] ) {
         // notify listeners
         this.emit('change:item', {$item: item, state: state});
@@ -153,6 +157,7 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         $item.value = data.value;
 
     } else {
+        $item.innerHTML = '';
         table = document.createElement('table');
         tr = document.createElement('tr');
         td = document.createElement('td');
@@ -185,4 +190,5 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
 CheckList.prototype.renderItem = CheckList.prototype.renderItemDefault;
 
 
+// public
 module.exports = CheckList;
