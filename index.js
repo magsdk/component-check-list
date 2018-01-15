@@ -165,7 +165,6 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         table.appendChild(tr);
         td.appendChild(check);
 
-
         td.className = 'checkBoxWrapper';
         tr.appendChild(td);
 
