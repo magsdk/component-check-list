@@ -142,9 +142,7 @@ CheckList.prototype.changeState = function ( item ) {
  * @param {string} [data.value] special value of item
  */
 CheckList.prototype.renderItemDefault = function ( $item, data ) {
-    var table,
-        tr,
-        td,
+    var table, tr, td,
         check;
 
     if ( $item.ready ) {
