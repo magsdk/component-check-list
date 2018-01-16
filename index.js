@@ -5,9 +5,9 @@
 
 'use strict';
 
-var List = require('mag-component-list'),
-    keys      = require('stb-keys'),
-    ICON = 'theme-icon theme-icon-checkbox',
+var List        = require('mag-component-list'),
+    keys        = require('stb-keys'),
+    ICON        = 'theme-icon theme-icon-checkbox',
     ICON_ACTIVE = 'theme-icon theme-icon-checkbox-active';
 
 
@@ -34,6 +34,7 @@ CheckList.prototype.constructor = CheckList;
 
 // set component name
 CheckList.prototype.name = 'mag-component-check-list';
+
 
 /**
  * Set data and render inner structures and HTML.
@@ -132,6 +133,7 @@ CheckList.prototype.changeState = function ( item ) {
     }
 };
 
+
 /**
  * Default render function
  *
@@ -151,7 +153,6 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
 
         $item.state = data.state;
         $item.value = data.value;
-
     } else {
         $item.innerHTML = '';
         table = document.createElement('table');
@@ -181,6 +182,7 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         $item.ready = true;
     }
 };
+
 
 CheckList.prototype.renderItem = CheckList.prototype.renderItemDefault;
 
