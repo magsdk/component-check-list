@@ -20,12 +20,12 @@ var List        = require('mag-component-list'),
  * @param {Object} [config={}] init parameters (all inherited from the parent)
  */
 function CheckList ( config ) {
-    List.call(this, config);
-
     /**
      * Checked data array
      */
     this.checkedData = [];
+
+    List.call(this, config);
 }
 
 
