@@ -42,13 +42,13 @@ CheckList.prototype.name = 'mag-component-check-list';
  * @param {Object} config init parameters (subset of constructor config params)
  */
 CheckList.prototype.setData = function ( config ) {
-    var i = 0;
+    var index = 0;
 
     List.prototype.setData.call(this, config);
 
-    for ( i; i < this.data.length; i++ ) {
-        if ( this.data[i].state ) {
-            this.checkedData.push(this.data[i]);
+    for ( index; index < this.data.length; index++ ) {
+        if ( this.data[index].state ) {
+            this.checkedData.push(this.data[index]);
         }
     }
 };
