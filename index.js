@@ -123,7 +123,7 @@ CheckList.prototype.changeState = function ( item ) {
     } else {
         index = this.checkedData.indexOf(data);
         if ( index !== -1 ) {
-            this.checkedData.slice(index, 1);
+            this.checkedData.splice(index, 1);
         }
     }
 
