@@ -45,7 +45,7 @@ CheckList.prototype.setData = function ( config ) {
     var index = 0;
 
     List.prototype.setData.call(this, config);
-
+    this.checkedData = [];
     for ( index; index < this.data.length; index++ ) {
         if ( this.data[index].state ) {
             this.checkedData.push(this.data[index]);
