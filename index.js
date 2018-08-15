@@ -5,10 +5,11 @@
 
 'use strict';
 
-var List        = require('mag-component-list'),
-    keys        = require('stb-keys'),
-    ICON        = 'theme-icon theme-icon-checkbox',
-    ICON_ACTIVE = 'theme-icon theme-icon-checkbox-active';
+var List         = require('mag-component-list'),
+    keys         = require('stb-keys'),
+    CLASS_ACTIVE = 'checked',
+    ICON         = 'theme-icon theme-icon-checkbox',
+    ICON_ACTIVE  = 'theme-icon theme-icon-checkbox-active';
 
 
 /**
@@ -48,10 +49,41 @@ CheckList.prototype.setData = function ( config ) {
     this.checkedData = [];
 
     for ( index; index < this.data.length; index++ ) {
+        this.data[index].defaultState = this.data[index].state;
         if ( this.data[index].state ) {
             this.checkedData.push(this.data[index]);
         }
     }
+
+    this.defaultFocusIndex = this.$focusItem.index;
+};
+
+
+/**
+ * Reset data to default state and render inner structures and HTML.
+ */
+CheckList.prototype.resetData = function () {
+    var index = 0;
+
+    for ( index; index < this.data.length; index++ ) {
+        this.data[index].state = this.data[index].defaultState;
+    }
+
+    this.setData({data: this.data, focusIndex: this.defaultFocusIndex});
+};
+
+
+/**
+ * Set all states to false and render inner structures and HTML.
+ */
+CheckList.prototype.clearChecked = function () {
+    var index = 0;
+
+    for ( index; index < this.data.length; index++ ) {
+        this.data[index].state = false;
+    }
+
+    this.setData({data: this.data});
 };
 
 
@@ -66,17 +98,7 @@ CheckList.prototype.defaultEvents = {
      *
      * @param {Event} event generated event
      */
-    mousewheel: function ( event ) {
-        // scrolling by Y axis
-        if ( this.type === this.TYPE_VERTICAL && event.wheelDeltaY ) {
-            this.move(event.wheelDeltaY > 0 ? keys.up : keys.down);
-        }
-
-        // scrolling by X axis
-        if ( this.type === this.TYPE_HORIZONTAL && event.wheelDeltaX ) {
-            this.move(event.wheelDeltaX > 0 ? keys.left : keys.right);
-        }
-    },
+    mousewheel: List.prototype.defaultEvents.mousewheel,
 
     /**
      * Default method to handle keyboard keydown events.
@@ -110,14 +132,20 @@ CheckList.prototype.defaultEvents = {
 };
 
 
-CheckList.prototype.changeState = function ( item ) {
-    var state = !item.state,
-        data = this.data[item.index],
+CheckList.prototype.changeState = function ( $item ) {
+    var state = !$item.state,
+        data = this.data[$item.index],
         index = -1;
 
-    item.state = state;
+    $item.state = state;
     data.state = state;
-    item.checkBox.className = state ? ICON_ACTIVE : ICON;
+    if ( state ) {
+        $item.classList.add(CLASS_ACTIVE);
+        $item.checkBox.className = ICON_ACTIVE;
+    } else {
+        $item.classList.remove(CLASS_ACTIVE);
+        $item.checkBox.className = ICON;
+    }
 
     if ( state ) {
         this.checkedData.push(data);
@@ -130,7 +158,7 @@ CheckList.prototype.changeState = function ( item ) {
 
     if ( this.events['change:item'] ) {
         // notify listeners
-        this.emit('change:item', {$item: item, state: state});
+        this.emit('change:item', {$item: $item, state: state});
     }
 };
 
@@ -150,7 +178,13 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
 
     if ( $item.ready ) {
         $item.$title.innerText = data.title || '';
-        $item.checkBox.className = data.state ? ICON_ACTIVE : ICON;
+        if ( data.state ) {
+            $item.classList.add(CLASS_ACTIVE);
+            $item.checkBox.className = ICON_ACTIVE;
+        } else {
+            $item.classList.remove(CLASS_ACTIVE);
+            $item.checkBox.className = ICON;
+        }
 
         $item.state = data.state;
         $item.value = data.value;
@@ -160,7 +194,13 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         tr = document.createElement('tr');
         td = document.createElement('td');
         check = document.createElement('div');
-        check.className = data.state ? ICON_ACTIVE : ICON;
+        if ( data.state ) {
+            $item.classList.add(CLASS_ACTIVE);
+            check.className = ICON_ACTIVE;
+        } else {
+            $item.classList.remove(CLASS_ACTIVE);
+            check.className = ICON;
+        }
 
         table.appendChild(tr);
         td.appendChild(check);
