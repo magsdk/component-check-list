@@ -55,7 +55,11 @@ CheckList.prototype.setData = function ( config ) {
         }
     }
 
-    this.defaultFocusIndex = this.$focusItem.index;
+    if ( this.$focusItem ) {
+        this.defaultFocusIndex = this.$focusItem.index;
+    } else {
+        this.defaultFocusIndex = 0;
+    }
 };
 
 
