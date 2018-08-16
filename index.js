@@ -79,15 +79,21 @@ CheckList.prototype.resetData = function () {
 
 /**
  * Set all states to false and render inner structures and HTML.
+ *
+ * @param {number} focusIndex focus index
  */
-CheckList.prototype.clearChecked = function () {
+CheckList.prototype.clearChecked = function ( focusIndex ) {
     var index = 0;
 
     for ( index; index < this.data.length; index++ ) {
         this.data[index].state = false;
     }
 
-    this.setData({data: this.data});
+    if ( !focusIndex && focusIndex !== 0 ) {
+        focusIndex = this.$focusItem ? this.$focusItem.index : 0;
+    }
+
+    this.setData({data: this.data, focusIndex: focusIndex});
 };
 
 
