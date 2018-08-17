@@ -8,8 +8,8 @@
 var List         = require('mag-component-list'),
     keys         = require('stb-keys'),
     CLASS_ACTIVE = 'checked',
-    ICON         = 'theme-icon theme-icon-checkbox',
-    ICON_ACTIVE  = 'theme-icon theme-icon-checkbox-active';
+    icon         = 'theme-icon theme-icon-checkbox',
+    iconActive  = 'theme-icon theme-icon-checkbox-active';
 
 
 /**
@@ -29,10 +29,10 @@ function CheckList ( config ) {
     this.checkedData = [];
 
     if ( config.iconClass ) {
-        ICON = config.iconClass;
+        icon = config.iconClass;
     }
     if ( config.iconActiveClass ) {
-        ICON_ACTIVE = config.iconActiveClass;
+        iconActive = config.iconActiveClass;
     }
 
     List.call(this, config);
@@ -160,10 +160,10 @@ CheckList.prototype.changeState = function ( $item ) {
     data.state = state;
     if ( state ) {
         $item.classList.add(CLASS_ACTIVE);
-        $item.checkBox.className = ICON_ACTIVE;
+        $item.checkBox.className = iconActive;
     } else {
         $item.classList.remove(CLASS_ACTIVE);
-        $item.checkBox.className = ICON;
+        $item.checkBox.className = icon;
     }
 
     if ( state ) {
@@ -199,10 +199,10 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         $item.$title.innerText = data.title || '';
         if ( data.state ) {
             $item.classList.add(CLASS_ACTIVE);
-            $item.checkBox.className = ICON_ACTIVE;
+            $item.checkBox.className = iconActive;
         } else {
             $item.classList.remove(CLASS_ACTIVE);
-            $item.checkBox.className = ICON;
+            $item.checkBox.className = icon;
         }
 
         $item.state = data.state;
@@ -215,10 +215,10 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         check = document.createElement('div');
         if ( data.state ) {
             $item.classList.add(CLASS_ACTIVE);
-            check.className = ICON_ACTIVE;
+            check.className = iconActive;
         } else {
             $item.classList.remove(CLASS_ACTIVE);
-            check.className = ICON;
+            check.className = icon;
         }
 
         table.appendChild(tr);
