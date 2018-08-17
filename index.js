@@ -19,12 +19,21 @@ var List         = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
+ * @param {String} [config.iconClass] icon default state class name
+ * @param {String} [config.iconActiveClass] icon active state class name
  */
 function CheckList ( config ) {
     /**
      * Checked data array
      */
     this.checkedData = [];
+
+    if ( config.iconClass ) {
+        ICON = config.iconClass;
+    }
+    if ( config.iconActiveClass ) {
+        ICON_ACTIVE = config.iconActiveClass;
+    }
 
     List.call(this, config);
 }
