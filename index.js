@@ -5,11 +5,11 @@
 
 'use strict';
 
-var List         = require('mag-component-list'),
-    keys         = require('stb-keys'),
-    CLASS_ACTIVE = 'checked',
-    ICON         = 'theme-icon theme-icon-checkbox',
-    ICON_ACTIVE  = 'theme-icon theme-icon-checkbox-active';
+var List            = require('mag-component-list'),
+    keys            = require('stb-keys'),
+    classChecked    = 'checked',
+    classIcon       = 'theme-icon theme-icon-checkbox',
+    classIconActive = 'theme-icon theme-icon-checkbox-active';
 
 
 /**
@@ -19,12 +19,25 @@ var List         = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
+ * @param {string} [config.classIcon] icon default state class name
+ * @param {string} [config.classIconActive] icon active state class name
+ * @param {string} [config.classChecked] checked item class
  */
 function CheckList ( config ) {
     /**
      * Checked data array
      */
     this.checkedData = [];
+
+    if ( config.classIcon ) {
+        classIcon = config.classIcon;
+    }
+    if ( config.classIconActive ) {
+        classIconActive = config.classIconActive;
+    }
+    if ( config.classChecked ) {
+        classIcon = config.classChecked;
+    }
 
     List.call(this, config);
 }
@@ -79,15 +92,22 @@ CheckList.prototype.resetData = function () {
 
 /**
  * Set all states to false and render inner structures and HTML.
+ *
+ * @param {number} [focusIndex] focus index
  */
-CheckList.prototype.clearChecked = function () {
+CheckList.prototype.clearChecked = function ( focusIndex ) {
     var index = 0;
 
     for ( index; index < this.data.length; index++ ) {
         this.data[index].state = false;
     }
 
-    this.setData({data: this.data});
+    // no focusIndex, focusIndex may be 0
+    if ( !focusIndex && focusIndex !== 0 ) {
+        focusIndex = this.$focusItem ? this.$focusItem.index : 0;
+    }
+
+    this.setData({data: this.data, focusIndex: focusIndex});
 };
 
 
@@ -144,11 +164,11 @@ CheckList.prototype.changeState = function ( $item ) {
     $item.state = state;
     data.state = state;
     if ( state ) {
-        $item.classList.add(CLASS_ACTIVE);
-        $item.checkBox.className = ICON_ACTIVE;
+        $item.classList.add(classChecked);
+        $item.checkBox.className = classIconActive;
     } else {
-        $item.classList.remove(CLASS_ACTIVE);
-        $item.checkBox.className = ICON;
+        $item.classList.remove(classChecked);
+        $item.checkBox.className = classIcon;
     }
 
     if ( state ) {
@@ -183,11 +203,11 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
     if ( $item.ready ) {
         $item.$title.innerText = data.title || '';
         if ( data.state ) {
-            $item.classList.add(CLASS_ACTIVE);
-            $item.checkBox.className = ICON_ACTIVE;
+            $item.classList.add(classChecked);
+            $item.checkBox.className = classIconActive;
         } else {
-            $item.classList.remove(CLASS_ACTIVE);
-            $item.checkBox.className = ICON;
+            $item.classList.remove(classChecked);
+            $item.checkBox.className = classIcon;
         }
 
         $item.state = data.state;
@@ -199,11 +219,11 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         td = document.createElement('td');
         check = document.createElement('div');
         if ( data.state ) {
-            $item.classList.add(CLASS_ACTIVE);
-            check.className = ICON_ACTIVE;
+            $item.classList.add(classChecked);
+            check.className = classIconActive;
         } else {
-            $item.classList.remove(CLASS_ACTIVE);
-            check.className = ICON;
+            $item.classList.remove(classChecked);
+            check.className = classIcon;
         }
 
         table.appendChild(tr);
