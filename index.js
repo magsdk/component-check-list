@@ -7,9 +7,9 @@
 
 var List            = require('mag-component-list'),
     keys            = require('stb-keys'),
-    ACTIVE_CLASS    = 'checked',
-    iconClass       = 'theme-icon theme-icon-checkbox',
-    iconActiveClass = 'theme-icon theme-icon-checkbox-active';
+    classChecked    = 'checked',
+    classIcon       = 'theme-icon theme-icon-checkbox',
+    classIconActive = 'theme-icon theme-icon-checkbox-active';
 
 
 /**
@@ -19,8 +19,9 @@ var List            = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
- * @param {string} [config.iconClass] icon default state class name
- * @param {string} [config.iconActiveClass] icon active state class name
+ * @param {string} [config.classIcon] icon default state class name
+ * @param {string} [config.classIconActive] icon active state class name
+ * @param {string} [config.classChecked] checked item class
  */
 function CheckList ( config ) {
     /**
@@ -28,11 +29,14 @@ function CheckList ( config ) {
      */
     this.checkedData = [];
 
-    if ( config.iconClass ) {
-        iconClass = config.iconClass;
+    if ( config.classIcon ) {
+        classIcon = config.classIcon;
     }
-    if ( config.iconActiveClass ) {
-        iconActiveClass = config.iconActiveClass;
+    if ( config.classIconActive ) {
+        classIconActive = config.classIconActive;
+    }
+    if ( config.classChecked ) {
+        classIcon = config.classChecked;
     }
 
     List.call(this, config);
@@ -89,7 +93,7 @@ CheckList.prototype.resetData = function () {
 /**
  * Set all states to false and render inner structures and HTML.
  *
- * @param {number} focusIndex focus index
+ * @param {number} [focusIndex] focus index
  */
 CheckList.prototype.clearChecked = function ( focusIndex ) {
     var index = 0;
@@ -98,7 +102,7 @@ CheckList.prototype.clearChecked = function ( focusIndex ) {
         this.data[index].state = false;
     }
 
-    // check focus item index
+    // no focusIndex, focusIndex may be 0
     if ( !focusIndex && focusIndex !== 0 ) {
         focusIndex = this.$focusItem ? this.$focusItem.index : 0;
     }
@@ -160,11 +164,11 @@ CheckList.prototype.changeState = function ( $item ) {
     $item.state = state;
     data.state = state;
     if ( state ) {
-        $item.classList.add(ACTIVE_CLASS);
-        $item.checkBox.className = iconActive;
+        $item.classList.add(classChecked);
+        $item.checkBox.className = classIconActive;
     } else {
-        $item.classList.remove(ACTIVE_CLASS);
-        $item.checkBox.className = iconClass;
+        $item.classList.remove(classChecked);
+        $item.checkBox.className = classIcon;
     }
 
     if ( state ) {
@@ -199,11 +203,11 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
     if ( $item.ready ) {
         $item.$title.innerText = data.title || '';
         if ( data.state ) {
-            $item.classList.add(ACTIVE_CLASS);
-            $item.checkBox.className = iconActiveClass;
+            $item.classList.add(classChecked);
+            $item.checkBox.className = classIconActive;
         } else {
-            $item.classList.remove(ACTIVE_CLASS);
-            $item.checkBox.className = iconClass;
+            $item.classList.remove(classChecked);
+            $item.checkBox.className = classIcon;
         }
 
         $item.state = data.state;
@@ -215,11 +219,11 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         td = document.createElement('td');
         check = document.createElement('div');
         if ( data.state ) {
-            $item.classList.add(ACTIVE_CLASS);
-            check.className = iconActiveClass;
+            $item.classList.add(classChecked);
+            check.className = classIconActive;
         } else {
-            $item.classList.remove(ACTIVE_CLASS);
-            check.className = iconClass;
+            $item.classList.remove(classChecked);
+            check.className = classIcon;
         }
 
         table.appendChild(tr);
