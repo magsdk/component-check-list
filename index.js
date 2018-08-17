@@ -19,8 +19,8 @@ var List         = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
- * @param {String} [config.iconClass] icon default state class name
- * @param {String} [config.iconActiveClass] icon active state class name
+ * @param {string} [config.iconClass] icon default state class name
+ * @param {string} [config.iconActiveClass] icon active state class name
  */
 function CheckList ( config ) {
     /**
