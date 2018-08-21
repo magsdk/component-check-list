@@ -43,7 +43,7 @@ var checkList = new CheckList({
 });
 ```
 
-To change data after creating:
+To change data after creation:
 
 ```js
 checkList.setData({
@@ -62,7 +62,7 @@ To change item state:
 checkList.changeState($domItem);
 ```
 
-To reset to init states:
+To reset to init state:
 
 ```js
 checkList.resetData();
