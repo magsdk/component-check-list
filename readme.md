@@ -62,7 +62,7 @@ To change item state:
 checkList.changeState($domItem);
 ```
 
-To reset to init state:
+To reset to init state (data and focusIndex):
 
 ```js
 checkList.resetData();
