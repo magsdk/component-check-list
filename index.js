@@ -202,6 +202,12 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
 
     if ( $item.ready ) {
         $item.$title.innerText = data.title || '';
+        if ( data.className ) {
+            $item.className = 'item ' + data.className;
+            if ( $item === this.$focusItem ) {
+                $item.className += ' focus';
+            }
+        }
         if ( data.state ) {
             $item.classList.add(classChecked);
             $item.checkBox.className = classIconActive;
@@ -214,6 +220,12 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
         $item.value = data.value;
     } else {
         $item.innerHTML = '';
+        if ( data.className ) {
+            $item.className = 'item ' + data.className;
+            if ( $item === this.$focusItem ) {
+                $item.className += ' focus';
+            }
+        }
         table = document.createElement('table');
         tr = document.createElement('tr');
         td = document.createElement('td');
