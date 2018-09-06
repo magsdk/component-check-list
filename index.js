@@ -200,6 +200,13 @@ CheckList.prototype.renderItemDefault = function ( $item, data ) {
     var table, tr, td,
         check;
 
+    if ( data.className ) {
+        $item.className = 'item ' + data.className;
+        if ( $item === this.$focusItem ) {
+            $item.className += ' focus';
+        }
+    }
+
     if ( $item.ready ) {
         $item.$title.innerText = data.title || '';
         if ( data.state ) {
